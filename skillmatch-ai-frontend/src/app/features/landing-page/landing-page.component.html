@@ -1,0 +1,64 @@
+<!-- Header Section -->
+<header class="header">
+  <div class="container">
+    <h1>{{ title }}</h1>
+    <nav>
+      <a routerLink="/login" class="btn btn-outline">Login</a>
+      <a routerLink="/register" class="btn btn-primary">Register</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <h2>Match Your Skills to the Perfect Opportunity</h2>
+      <p>AI-powered platform connecting talent with opportunities based on actual skills and potential</p>
+      <a routerLink="/register" class="btn btn-primary">Get Started</a>
+    </div>
+  </section>
+
+  <section class="problem-statement">
+    <div class="container">
+      <h2>The Problem</h2>
+      <div class="problem-grid">
+        <div class="problem-card" *ngFor="let problem of problems">
+          <h3>{{ problem.title }}</h3>
+          <p>{{ problem.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <h2>Key Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card" *ngFor="let feature of features">
+          <span class="feature-icon">{{ feature.icon }}</span>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Transform Your Career?</h2>
+      <p>Join SkillMatch AI today and discover opportunities that match your true potential</p>
+      <a routerLink="/register" class="btn btn-primary">Start Your Journey</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2024 SkillMatch AI. All rights reserved.</p>
+    <nav>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Contact Us</a>
+    </nav>
+  </div>
+</footer> 

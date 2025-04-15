@@ -1,0 +1,36 @@
+<header>
+  <div class="container header-container">
+    <a routerLink="/" class="logo">
+      <i class="fas fa-brain"></i>
+      <h1>Skill<span>Match</span> AI</h1>
+    </a>
+    <nav class="nav-links">
+      <a routerLink="/" fragment="features">Features</a>
+      <a routerLink="/" fragment="how-it-works">How It Works</a>
+      <a routerLink="/" fragment="employers">For Employers</a>
+      <a routerLink="/" fragment="candidates">For Candidates</a>
+    </nav>
+    <div class="auth-buttons">
+      <a routerLink="/login" class="btn btn-outline">Log In</a>
+      <a routerLink="/register" class="btn btn-primary">Sign Up</a>
+    </div>
+    <button class="mobile-menu-btn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2024 SkillMatch AI. All rights reserved.</p>
+    <nav>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Contact Us</a>
+    </nav>
+  </div>
+</footer>
