@@ -1,0 +1,87 @@
+<div class="dashboard">
+  <div class="welcome-section">
+    <h1>Welcome,</h1>
+    <h2>job seeker</h2>
+  </div>
+
+  <!-- Applications Section -->
+  <section class="dashboard-section applications">
+    <h3>Applications</h3>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">{{ applications.sent }}</div>
+        <div class="stat-label">Applications sent</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">{{ applications.replied }}</div>
+        <div class="stat-label">Applications replied</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">{{ applications.companiesContacted }}</div>
+        <div class="stat-label">Companies contacted</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">{{ applications.companiesReplied }}</div>
+        <div class="stat-label">Companies replied</div>
+      </div>
+    </div>
+    <div class="additional-info">
+      <div class="info-item">
+        <span class="label">Top role applied:</span>
+        <span class="value">{{ applications.topRole }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Recommendations:</span>
+        <span class="value">{{ applications.recommendations }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interviews Section -->
+  <section class="dashboard-section interviews">
+    <h3>Interviews</h3>
+    <div class="interview-stats">
+      <div class="stat-card">
+        <div class="stat-header">Pending interviews:</div>
+        <div class="stat-value highlight">{{ interviews.pending }}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-header">Interviews done:</div>
+        <div class="stat-value">{{ interviews.completed }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommended Jobs Section -->
+  <section class="dashboard-section recommended-jobs">
+    <h3>Recommended Jobs</h3>
+    <div class="jobs-grid">
+      <div class="job-card" *ngFor="let job of recommendedJobs">
+        <div class="job-header">
+          <div class="company-logo">{{ job.logo }}</div>
+          <div class="company-info">
+            <h4>{{ job.company }}</h4>
+            <p class="location">
+              <i class="fas fa-map-marker-alt"></i>
+              {{ job.location }}
+            </p>
+          </div>
+        </div>
+        <div class="job-details">
+          <h5>{{ job.position }}</h5>
+          <p class="salary">
+            <i class="fas fa-money-bill-wave"></i>
+            {{ job.salary }}
+          </p>
+        </div>
+        <div class="skills">
+          <span class="skill-tag" *ngFor="let skill of job.skills">{{ skill }}</span>
+        </div>
+        <div class="job-actions">
+          <button class="btn-apply">Apply</button>
+          <button class="btn-save">Add to list</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div> 

@@ -1,28 +1,33 @@
-<!-- Header Section -->
-<header class="header">
-  <div class="container">
-    <h1>{{ title }}</h1>
-    <nav>
-      <a routerLink="/login" class="btn btn-outline">Login</a>
-      <a routerLink="/register" class="btn btn-primary">Register</a>
-    </nav>
-  </div>
-</header>
-
 <main>
-  <section class="hero">
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
     <div class="container">
-      <h2>Match Your Skills to the Perfect Opportunity</h2>
-      <p>AI-powered platform connecting talent with opportunities based on actual skills, and potential</p>
-      <a routerLink="/register" class="btn btn-primary">Get Started</a>
+      <div class="hero-content animate-fadeInUp">
+        <h1>Match Your Skills to the Perfect Opportunity</h1>
+        <p>AI-powered platform connecting talent with opportunities based on actual skills and potential</p>
+        <div class="hero-buttons">
+          <a routerLink="/register" class="btn btn-primary">
+            Get Started
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a (click)="scrollToSection('features')" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="problem-statement">
+  <!-- Problem Statement Section -->
+  <section id="problems" class="problem-statement">
     <div class="container">
-      <h2>The Problem</h2>
+      <div class="section-header">
+        <h2 class="animate-fadeInUp">Common Hiring Challenges We Solve</h2>
+        <p class="section-subtitle">Transforming how talent connects with opportunities</p>
+      </div>
       <div class="problem-grid">
-        <div class="problem-card" *ngFor="let problem of problems">
+        <div class="problem-card animate-fadeInUp delay-1" *ngFor="let problem of problems">
+          <div class="card-icon">
+            <i class="fas" [ngClass]="problem.icon || 'fa-check-circle'"></i>
+          </div>
           <h3>{{ problem.title }}</h3>
           <p>{{ problem.description }}</p>
         </div>
@@ -30,12 +35,18 @@
     </div>
   </section>
 
-  <section class="features">
+  <!-- Features Section -->
+  <section id="features" class="features">
     <div class="container">
-      <h2>Key Features</h2>
+      <div class="section-header">
+        <h2 class="animate-fadeInUp">Powerful Features</h2>
+        <p class="section-subtitle">Tools that make a difference</p>
+      </div>
       <div class="feature-grid">
-        <div class="feature-card" *ngFor="let feature of features">
-          <span class="feature-icon">{{ feature.icon }}</span>
+        <div class="feature-card animate-fadeInUp delay-1" *ngFor="let feature of features">
+          <div class="feature-icon">
+            <i class="fas" [ngClass]="feature.icon"></i>
+          </div>
           <h3>{{ feature.title }}</h3>
           <p>{{ feature.description }}</p>
         </div>
@@ -43,22 +54,71 @@
     </div>
   </section>
 
-  <section class="cta">
+  <!-- CTA Section -->
+  <section id="cta" class="cta">
     <div class="container">
-      <h2>Ready to Transform Your Career?</h2>
-      <p>Join SkillMatch AI today and discover opportunities that match your true potential</p>
-      <a routerLink="/register" class="btn btn-primary">Start Your Journey</a>
+      <div class="cta-content animate-fadeInUp">
+        <h2>Ready to Transform Your Career?</h2>
+        <p>Join SkillMatch AI today and discover opportunities that match your true potential</p>
+        <div class="cta-buttons">
+          <a routerLink="/register" class="btn btn-primary">
+            Start Your Journey
+            <i class="fas fa-rocket"></i>
+          </a>
+          <a (click)="scrollToSection('contact')" class="btn btn-outline">Contact Sales</a>
+        </div>
+      </div>
     </div>
   </section>
 </main>
 
+<!-- Footer -->
 <footer class="footer">
   <div class="container">
-    <p>&copy; 2024 SkillMatch AI. All rights reserved.</p>
-    <nav>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">Contact Us</a>
-    </nav>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>SkillMatch AI</h4>
+        <p>Revolutionizing the hiring process through AI-powered skill matching.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a (click)="scrollToSection('problems')">How It Works</a></li>
+          <li><a (click)="scrollToSection('features')">Features</a></li>
+          <li><a routerLink="/pricing">Pricing</a></li>
+          <li><a (click)="scrollToSection('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Help Center</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <ul class="contact-info">
+          <!-- <li><i class="fas fa-envelope"></i> info&#64skillmatchai.com</li> -->
+          <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+          <li><i class="fas fa-map-marker-alt"></i> San Francisco, CA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 SkillMatch AI. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
   </div>
 </footer> 

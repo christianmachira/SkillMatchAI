@@ -1,46 +1,57 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { NavigationService } from '../../core/services/navigation.service';
 
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent {
   title = 'SkillMatch AI';
-  features = [
+  
+  problems = [
     {
-      title: 'AI-Driven Job Matching',
-      description: 'Get matched with opportunities based on your actual skills and potential',
-      icon: '🎯'
+      title: 'Skills Gap',
+      description: 'Traditional hiring often misses qualified candidates due to rigid requirements.',
+      icon: 'fa-gap'
     },
     {
-      title: 'Skill-Based Profiles',
-      description: 'Create detailed skill profiles that showcase your true capabilities',
-      icon: '📊'
+      title: 'Time Wasted',
+      description: 'Both employers and candidates spend too much time on mismatched opportunities.',
+      icon: 'fa-clock'
     },
     {
-      title: 'Career Guidance',
-      description: 'Receive personalized career path recommendations based on your skills',
-      icon: '🚀'
+      title: 'Bias in Hiring',
+      description: 'Unconscious bias affects hiring decisions, limiting diversity and innovation.',
+      icon: 'fa-balance-scale'
     }
   ];
 
-  problems = [
+  features = [
     {
-      title: 'Hidden Talent',
-      description: 'Talented individuals without traditional backgrounds struggle to get noticed'
+      title: 'AI-Powered Matching',
+      description: 'Advanced algorithms match skills to opportunities with high accuracy.',
+      icon: 'fa-brain'
     },
     {
-      title: 'Resource Waste',
-      description: 'Employers waste resources screening inappropriate candidates'
+      title: 'Skill Assessment',
+      description: 'Comprehensive skill evaluation tools for accurate candidate profiling.',
+      icon: 'fa-tasks'
     },
     {
-      title: 'Skills Gap',
-      description: 'Skills gaps persist despite qualified candidates being available'
+      title: 'Real-time Analytics',
+      description: 'Data-driven insights to improve hiring decisions and career growth.',
+      icon: 'fa-chart-line'
     }
   ];
+
+  constructor(private navigationService: NavigationService) {}
+
+  scrollToSection(sectionId: string) {
+    this.navigationService.scrollToSection(sectionId);
+  }
 } 

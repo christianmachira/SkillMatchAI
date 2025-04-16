@@ -1,0 +1,96 @@
+<div class="career-container">
+  <div class="header">
+    <h1>Career</h1>
+  </div>
+
+  <!-- Analytics Section -->
+  <section class="analytics-section">
+    <h2>Analytics</h2>
+    <div class="analytics-grid">
+      <!-- Profile Views Chart -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3>Profile views</h3>
+          <span class="info-text">The graph shows number of views your profile has received over a period of 12 months</span>
+          <button class="expand-btn">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+        <div class="chart">
+          <canvas baseChart
+                  [data]="profileViewsChartData"
+                  [options]="profileViewsChartOptions"
+                  type="line">
+          </canvas>
+        </div>
+      </div>
+
+      <!-- Job Matches Chart -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3>Job matches</h3>
+          <span class="info-text">The graph shows number of jobs matched to your profile over a period of 12 months</span>
+          <button class="expand-btn">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+        <div class="chart">
+          <canvas baseChart
+                  [data]="jobMatchesChartData"
+                  [options]="jobMatchesChartOptions"
+                  type="bar">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section class="courses-section">
+    <h2>Courses</h2>
+    <div class="courses-grid">
+      @for (course of courses; track course.id) {
+        <div class="course-card">
+          <div class="card-header">
+            <img [src]="'/assets/provider-logos/' + course.logo + '.png'" 
+                 [alt]="course.provider + ' logo'" 
+                 class="provider-logo">
+            <div class="course-info">
+              <h3>{{course.title}}</h3>
+              <p class="provider">{{course.provider}}</p>
+            </div>
+          </div>
+          <p class="description">{{course.description}}</p>
+          <div class="progress-bar">
+            <div class="progress" [style.width.%]="course.progress"></div>
+            <span class="progress-text">{{course.progress}}% Complete</span>
+          </div>
+          <button class="view-btn" (click)="viewCourse(course.id)">View</button>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section class="certifications-section">
+    <h2>Certifications</h2>
+    <div class="certifications-grid">
+      @for (cert of certifications; track cert.id) {
+        <div class="certification-card">
+          <div class="card-header">
+            <img [src]="'/assets/provider-logos/' + cert.logo + '.png'" 
+                 [alt]="cert.provider + ' logo'" 
+                 class="provider-logo">
+            <div class="certification-info">
+              <h3>{{cert.title}}</h3>
+              <p class="provider">{{cert.provider}}</p>
+            </div>
+          </div>
+          <p class="description">{{cert.description}}</p>
+          <p class="valid-until">Valid until: {{cert.validUntil}}</p>
+          <button class="view-btn" (click)="viewCertification(cert.id)">View</button>
+        </div>
+      }
+    </div>
+  </section>
+</div> 

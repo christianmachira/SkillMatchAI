@@ -1,0 +1,70 @@
+<div class="my-jobs-container">
+  <div class="header">
+    <h1>My Job Applications</h1>
+    <div class="controls">
+      <div class="filter-group">
+        <label for="status">Filter by Status:</label>
+        <select id="status" (change)="filterJobs($event)">
+          <option value="all">All Applications</option>
+          <option value="applied">Applied</option>
+          <option value="under-review">Under Review</option>
+          <option value="interview-scheduled">Interview Scheduled</option>
+          <option value="rejected">Rejected</option>
+        </select>
+      </div>
+      <div class="sort-group">
+        <label for="sort">Sort by:</label>
+        <select id="sort" (change)="sortJobs($event)">
+          <option value="date">Date Applied</option>
+          <option value="salary">Salary</option>
+          <option value="company">Company</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="jobs-grid">
+    @for (job of filteredJobs; track job.id) {
+      <div class="job-card" [ngClass]="job.status.toLowerCase().replace(' ', '-')">
+        <div class="card-header">
+          <div class="company-info">
+            <img [src]="'assets/company-logos/' + job.logo + '.png'" [alt]="job.company + ' logo'" class="company-logo">
+            <div class="company-details">
+              <h3>{{job.position}}</h3>
+              <p class="company-name">{{job.company}}</p>
+            </div>
+          </div>
+          <div class="status-badge" [ngClass]="job.status.toLowerCase().replace(' ', '-')">
+            {{job.status}}
+          </div>
+        </div>
+
+        <div class="job-details">
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>{{job.location}}</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-money-bill-wave"></i>
+            <span>{{job.salary}}</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-clock"></i>
+            <span>{{job.type}}</span>
+          </div>
+        </div>
+
+        <div class="skills-container">
+          @for (skill of job.skills; track skill) {
+            <span class="skill-tag">{{skill}}</span>
+          }
+        </div>
+
+        <div class="application-info">
+          <p class="date-applied">Applied on: {{job.dateApplied | date:'mediumDate'}}</p>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+    }
+  </div>
+</div> 

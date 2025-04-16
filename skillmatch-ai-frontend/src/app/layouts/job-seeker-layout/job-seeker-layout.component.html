@@ -1,0 +1,54 @@
+<div class="job-seeker-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a routerLink="/" class="logo">
+        <span class="logo-text">SkillMatch<span class="highlight">AI</span></span>
+      </a>
+      <button class="toggle-sidebar">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul>
+        <li *ngFor="let item of navItems">
+          <a [routerLink]="item.route" routerLinkActive="active">
+            <span class="nav-icon">{{ item.icon }}</span>
+            <span class="nav-label">{{ item.label }}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a routerLink="/feedback" class="feedback-link">
+        <span class="nav-icon">📝</span>
+        <span class="nav-label">Feedback</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <h1 class="page-title">SkillMatch-AI</h1>
+        <div class="header-actions">
+          <button class="notification-btn">
+            <i class="fas fa-bell"></i>
+          </button>
+          <button class="profile-btn">
+            <i class="fas fa-user"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div> 

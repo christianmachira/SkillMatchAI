@@ -1,22 +1,24 @@
-<header>
-  <div class="container header-container">
-    <a routerLink="/" class="logo">
-      <i class="fas fa-brain"></i>
-      <h1>Skill<span>Match</span> AI</h1>
-    </a>
-    <nav class="nav-links">
-      <a routerLink="/" fragment="features">Features</a>
-      <a routerLink="/" fragment="how-it-works">How It Works</a>
-      <a routerLink="/" fragment="employers">For Employers</a>
-      <a routerLink="/" fragment="candidates">For Candidates</a>
+<header class="header">
+  <div class="container">
+    <nav class="navbar">
+      <a routerLink="/" class="logo">
+        <i class="fas fa-brain"></i>
+        <span class="logo-text">SkillMatch<span class="highlight">AI</span></span>
+      </a>
+      <div class="nav-links">
+        <a (click)="scrollToSection('features')">Features</a>
+        <a (click)="scrollToSection('problems')">How It Works</a>
+        <a routerLink="/employers">For Employers</a>
+        <a routerLink="/job-seeker">For Candidates</a>
+      </div>
+      <div class="auth-buttons">
+        <a routerLink="/login" class="btn btn-outline">Log In</a>
+        <a routerLink="/register" class="btn btn-primary">Sign Up</a>
+      </div>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
     </nav>
-    <div class="auth-buttons">
-      <a routerLink="/login" class="btn btn-outline">Log In</a>
-      <a routerLink="/register" class="btn btn-primary">Sign Up</a>
-    </div>
-    <button class="mobile-menu-btn">
-      <i class="fas fa-bars"></i>
-    </button>
   </div>
 </header>
 
@@ -30,7 +32,7 @@
     <nav>
       <a href="#">Privacy Policy</a>
       <a href="#">Terms of Service</a>
-      <a href="#">Contact Us</a>
+      <a (click)="scrollToSection('contact')">Contact Us</a>
     </nav>
   </div>
 </footer>
