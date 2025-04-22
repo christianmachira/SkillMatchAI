@@ -1,0 +1,94 @@
+<div class="feedback-container">
+  <div class="feedback-header">
+    <h1>Platform Feedback</h1>
+    <p>Help us improve SkillMatch AI by sharing your experience</p>
+  </div>
+
+  <div class="feedback-content" *ngIf="!feedbackSubmitted">
+    <div class="feedback-form">
+      <form (ngSubmit)="submitFeedback()">
+        <div class="form-group">
+          <label for="category">Feedback Category</label>
+          <select id="category" [(ngModel)]="feedback.category" name="category" required>
+            <option value="" disabled selected>Select a category</option>
+            <option *ngFor="let category of feedbackCategories" [value]="category.id">{{category.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Rate Your Experience</label>
+          <div class="rating-container">
+            <div class="star-rating">
+              <span *ngFor="let rating of feedbackRatings" 
+                  class="star" 
+                  [class.active]="feedback.rating >= rating"
+                  (click)="setRating(rating)">★</span>
+            </div>
+            <span class="rating-label" *ngIf="feedback.rating > 0">
+              {{getRatingLabel(feedback.rating)}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="title">Feedback Title</label>
+          <input type="text" id="title" [(ngModel)]="feedback.title" name="title" required placeholder="Brief summary of your feedback">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Detailed Feedback</label>
+          <textarea id="description" [(ngModel)]="feedback.description" name="description" rows="6" required placeholder="Please provide specific details about your experience"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address (optional)</label>
+          <input type="email" id="email" [(ngModel)]="feedback.email" name="email" placeholder="Your email for follow-up questions">
+        </div>
+
+        <div class="form-group">
+          <label for="screenshot">Attach Screenshot (optional)</label>
+          <input type="file" id="screenshot" (change)="handleFileInput($event)" class="file-input" accept="image/*">
+          <div class="file-input-wrapper">
+            <button type="button" class="file-input-button">Choose File</button>
+            <span class="file-name">{{ feedback.attachScreenshot ? feedback.attachScreenshot.name : 'No file chosen' }}</span>
+          </div>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="allowContact" [(ngModel)]="feedback.allowContact" name="allowContact">
+          <label for="allowContact">Allow us to contact you about your feedback</label>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" (click)="resetForm()">Cancel</button>
+          <button type="submit" class="btn-primary">Submit Feedback</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="feedback-info">
+      <div class="info-card">
+        <h3>Why Your Feedback Matters</h3>
+        <p>At SkillMatch AI, we're committed to creating the best possible experience for job seekers and employers. Your feedback directly influences our development priorities and helps us build a platform that truly serves your needs.</p>
+      </div>
+      
+      <div class="info-card">
+        <h3>What Happens Next?</h3>
+        <p>Our product team reviews all feedback weekly. High-impact suggestions are prioritized for upcoming releases. If you've provided your email and allowed us to contact you, we may reach out with follow-up questions or to let you know when your suggestion has been implemented.</p>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="quote">"Thanks to user feedback, we've improved our matching algorithm by 35% over the past year."</div>
+        <div class="author">- SkillMatch AI Team</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success message after submission -->
+  <div class="feedback-success" *ngIf="feedbackSubmitted">
+    <div class="success-icon">✓</div>
+    <h2>Thank You for Your Feedback!</h2>
+    <p>Your input helps us make SkillMatch AI better for everyone.</p>
+    <p class="redirect-message">You'll be redirected to the dashboard in a few seconds...</p>
+  </div>
+</div> 

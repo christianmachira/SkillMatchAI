@@ -6,6 +6,10 @@ import { JobSeekerLayoutComponent } from './layouts/job-seeker-layout/job-seeker
 import { DashboardComponent } from './features/job-seeker/dashboard/dashboard.component';
 import { MyJobsComponent } from './features/job-seeker/my-jobs/my-jobs.component';
 import { CareerComponent } from './features/job-seeker/career/career.component';
+import { ProfileComponent } from './features/job-seeker/profile/profile.component';
+import { SupportComponent } from './features/support/support.component';
+import { SettingsComponent } from './features/settings/settings.component';
+import { FeedbackComponent } from './features/feedback/feedback.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -19,7 +23,10 @@ export const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'jobs', component: MyJobsComponent },
       { path: 'career', component: CareerComponent },
-      // Other job seeker routes will be added here
+      { path: 'profile', component: ProfileComponent },
+      { path: 'support', component: SupportComponent },
+      { path: 'settings', component: SettingsComponent },
+      { path: 'feedback', component: FeedbackComponent },
     ]
   },
   { path: '**', redirectTo: '' }

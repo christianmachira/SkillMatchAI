@@ -1,0 +1,59 @@
+<div class="layout-container">
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <h1>SkillMatch-AI</h1>
+    </div>
+    <div class="header-icons">
+      <div class="notification-icon">🔔</div>
+      <div class="profile-icon">👤</div>
+    </div>
+    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+  </header>
+
+  <div class="main-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <nav class="nav-menu">
+        <div *ngFor="let item of menuItems" class="nav-item" [routerLink]="['/employer', item.path]" routerLinkActive="active">
+          <span class="icon">{{ item.icon }}</span>
+          <span class="label">{{ item.label }}</span>
+        </div>
+        <div class="nav-item feedback" [routerLink]="['/employer/feedback']">
+          <span class="icon">🗣️</span>
+          <span class="label">Feedback</span>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="company">
+        <h2>SkillMatch-AI</h2>
+        <p>Re-imagining job searching</p>
+      </div>
+      
+      <div class="footer-links">
+        <div class="links-column">
+          <a href="#">About</a>
+          <a href="#">Services</a>
+          <a href="#">Support</a>
+          <a href="#">Contact Us</a>
+        </div>
+        
+        <div class="links-column">
+          <a href="#">Find job</a>
+          <a href="#">Get talent</a>
+          <a href="#">Companies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div> 

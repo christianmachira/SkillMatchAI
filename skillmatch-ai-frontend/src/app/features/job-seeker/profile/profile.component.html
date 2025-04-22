@@ -1,0 +1,138 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <div class="profile-photo">
+      <img [src]="user.photoUrl" alt="Profile photo">
+      <div class="edit-photo-btn" (click)="openFileUpload()">
+        <span>edit profile photo</span>
+      </div>
+      <input type="file" id="photoUpload" hidden>
+    </div>
+    
+    <div class="profile-identity">
+      <h2>
+        {{user.firstName}} {{user.lastName}}
+        <span class="verified-badge" *ngIf="user.verified">✓</span>
+      </h2>
+      <p class="profession">{{user.profession}}</p>
+    </div>
+  </div>
+
+  <div class="profile-content">
+    <div class="section">
+      <h3>personal details</h3>
+      <hr>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">first name</label>
+          <input type="text" id="firstName" [(ngModel)]="user.firstName">
+          <button class="edit-btn">edit</button>
+        </div>
+        
+        <div class="form-group">
+          <label for="lastName">last name</label>
+          <input type="text" id="lastName" [(ngModel)]="user.lastName">
+          <button class="edit-btn">edit</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>job status</h3>
+      <hr>
+      
+      <div class="toggle-group">
+        <div class="toggle-option">
+          <div class="toggle-text">
+            <p class="toggle-title">currently employed</p>
+            <p class="toggle-subtitle">working at current company</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="jobStatus.currentlyEmployed">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        
+        <div class="toggle-option">
+          <div class="toggle-text">
+            <p class="toggle-title">freelancing</p>
+            <p class="toggle-subtitle">currently freelancing</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="jobStatus.freelancing">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        
+        <div class="toggle-option">
+          <div class="toggle-text">
+            <p class="toggle-title">seeking opportunity</p>
+            <p class="toggle-subtitle">looking for work opportunities</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="jobStatus.seekingOpportunity">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        
+        <div class="toggle-option">
+          <div class="toggle-text">
+            <p class="toggle-title">internship</p>
+            <p class="toggle-subtitle">currently interning</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="jobStatus.internship">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>contact information</h3>
+      <hr>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phoneNumber">phone number</label>
+          <div class="phone-input">
+            <select [(ngModel)]="user.countryCode">
+              <option value="+254">+254</option>
+              <option value="+1">+1</option>
+              <option value="+44">+44</option>
+            </select>
+            <input type="tel" id="phoneNumber" [(ngModel)]="user.phoneNumber">
+          </div>
+          <button class="edit-btn">edit</button>
+        </div>
+        
+        <div class="form-group">
+          <label for="tel">tel</label>
+          <input type="tel" id="tel" [(ngModel)]="user.tel">
+          <button class="edit-btn">edit</button>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label for="email">email</label>
+          <input type="email" id="email" [(ngModel)]="user.email">
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label for="profession">profession</label>
+          <select id="profession" [(ngModel)]="user.profession">
+            <option *ngFor="let prof of professions" [value]="prof">{{prof}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn cancel-btn">Cancel</button>
+      <button class="btn save-btn" (click)="saveProfile()">Save</button>
+    </div>
+  </div>
+</div> 

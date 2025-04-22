@@ -1,0 +1,11 @@
+---
+description: tech stack to use
+globs: 
+alwaysApply: false
+---
+-Angular front end
+-Node js with express backend
+-Postgress database
+-JWT tokens for auth with role based access
+-AI integration: Gemini 
+

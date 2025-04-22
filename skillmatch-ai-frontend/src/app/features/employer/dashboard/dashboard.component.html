@@ -1,0 +1,133 @@
+<div class="dashboard-container">
+  <div class="welcome-section">
+    <h1>welcome, recruiter</h1>
+    <div class="quick-stats-card">
+      <h3>My dashboard</h3>
+      <div class="quick-stats-grid">
+        <div class="stat-item">
+          <span class="stat-label">Jobs posted:</span>
+          <span class="stat-value">{{stats.jobsPosted}}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Pending reviews:</span>
+          <span class="stat-value">{{stats.jobsPending}}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Job applications received:</span>
+          <span class="stat-value">12</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Pending interviews:</span>
+          <span class="stat-value">4</span>
+        </div>
+      </div>
+      <div class="action-buttons">
+        <button class="action-btn create-btn" routerLink="/employer/post-job">
+          Create job Posting +
+        </button>
+        <button class="action-btn schedule-btn" routerLink="/employer/interviews">
+          Schedule interview +
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-cards">
+    <!-- Stats Section -->
+    <div class="dashboard-card stats-card">
+      <div class="card-header">
+        <h2>Stats</h2>
+        <div class="more-options">⋯</div>
+      </div>
+      <div class="card-content stats-grid">
+        <div class="stat-box">
+          <div class="stat-title">Jobs posted</div>
+          <div class="stat-value">{{stats.jobsPosted}}</div>
+          <div class="stat-growth">{{stats.growth}}% growth</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-title">Jobs pending</div>
+          <div class="stat-value">{{stats.jobsPending}}</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-title">Jobs done</div>
+          <div class="stat-value">{{stats.jobsDone}}</div>
+        </div>
+        <div class="new-opportunity-box">
+          <div class="opportunity-text">Create a new opportunity</div>
+          <button class="create-job-btn" (click)="createNewJob()">Create new job</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analytics Section -->
+    <div class="dashboard-card analytics-card">
+      <div class="card-header">
+        <h2>Analytics</h2>
+        <div class="view-more">→</div>
+      </div>
+      <div class="card-content">
+        <div class="analytics-chart">
+          <!-- This would be replaced with an actual chart component -->
+          <img src="/assets/images/analytics-chart.svg" alt="Analytics Chart" class="chart-placeholder">
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Job Section -->
+    <div class="dashboard-card edit-jobs-card">
+      <div class="card-header">
+        <h2>Edit job</h2>
+      </div>
+      <div class="card-content">
+        <div class="job-list">
+          <div class="job-item" *ngFor="let job of jobsToEdit">
+            <div class="job-profile">
+              <img [src]="job.img" alt="Profile photo" class="profile-img">
+            </div>
+            <div class="job-details">
+              <h3>{{job.title}}</h3>
+              <p>{{job.description}}</p>
+              <div class="job-salary">{{job.salary}}</div>
+              <div class="job-status">
+                Status: 
+                <span class="status-badge" [ngClass]="{'active': job.status === 'Active', 'pending': job.status === 'Pending'}">
+                  {{job.status}}
+                </span>
+              </div>
+            </div>
+            <div class="job-actions">
+              <button class="edit-btn" (click)="editJob(job.id)">Edit</button>
+              <button class="save-btn" (click)="saveJob(job.id)">Save</button>
+              <button class="cancel-btn" (click)="cancelEdit(job.id)">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Close Job Section -->
+    <div class="dashboard-card close-jobs-card">
+      <div class="card-header">
+        <h2>Close job</h2>
+      </div>
+      <div class="card-content">
+        <div class="job-list">
+          <div class="job-item" *ngFor="let job of jobsToClose">
+            <div class="job-profile">
+              <img [src]="job.img" alt="Profile photo" class="profile-img">
+            </div>
+            <div class="job-details">
+              <h3>{{job.title}}</h3>
+              <p>{{job.description}}</p>
+              <div class="job-posted">posted on: {{job.postedOn}}</div>
+            </div>
+            <div class="job-actions">
+              <button class="close-btn" (click)="closeJob(job.id)">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

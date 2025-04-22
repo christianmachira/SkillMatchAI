@@ -1,0 +1,297 @@
+<div class="settings-container">
+  <div class="settings-header">
+    <h1>Settings</h1>
+    <p>Manage your account preferences and settings</p>
+  </div>
+
+  <div class="settings-content">
+    <div class="settings-sidebar">
+      <div class="setting-nav-item" 
+          [class.active]="currentSection === 'notifications'"
+          (click)="setCurrentSection('notifications')">
+        Notifications
+      </div>
+      <div class="setting-nav-item" 
+          [class.active]="currentSection === 'privacy'"
+          (click)="setCurrentSection('privacy')">
+        Privacy
+      </div>
+      <div class="setting-nav-item" 
+          [class.active]="currentSection === 'account'"
+          (click)="setCurrentSection('account')">
+        Account
+      </div>
+      <div class="setting-nav-item" 
+          [class.active]="currentSection === 'appearance'"
+          (click)="setCurrentSection('appearance')">
+        Appearance
+      </div>
+    </div>
+
+    <div class="settings-main">
+      <!-- Notifications Settings -->
+      <div class="settings-section" *ngIf="currentSection === 'notifications'">
+        <h2>Notification Settings</h2>
+        <p class="section-description">Control how you receive notifications from SkillMatch AI</p>
+
+        <div class="settings-group">
+          <h3>Notification Methods</h3>
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">Email Notifications</div>
+              <div class="setting-description">Receive notifications via email</div>
+            </div>
+            <div class="setting-control">
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="settings.notifications.email">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">Push Notifications</div>
+              <div class="setting-description">Receive notifications in your browser</div>
+            </div>
+            <div class="setting-control">
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="settings.notifications.push">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">SMS Notifications</div>
+              <div class="setting-description">Receive text message notifications</div>
+            </div>
+            <div class="setting-control">
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="settings.notifications.sms">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <h3>Notification Types</h3>
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">New Messages</div>
+              <div class="setting-description">Get notified when you receive new messages</div>
+            </div>
+            <div class="setting-control">
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="settings.notifications.newMessages">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">Job Alerts</div>
+              <div class="setting-description">Get notified about new job opportunities</div>
+            </div>
+            <div class="setting-control">
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="settings.notifications.jobAlerts">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">Marketing Emails</div>
+              <div class="setting-description">Receive promotional emails and newsletters</div>
+            </div>
+            <div class="setting-control">
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="settings.notifications.marketingEmails">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Settings -->
+      <div class="settings-section" *ngIf="currentSection === 'privacy'">
+        <h2>Privacy Settings</h2>
+        <p class="section-description">Control your privacy and visibility preferences</p>
+
+        <div class="settings-group">
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">Profile Visibility</div>
+              <div class="setting-description">Control who can see your profile</div>
+            </div>
+            <div class="setting-control select-control">
+              <select [(ngModel)]="settings.privacy.profileVisibility">
+                <option value="public">Public</option>
+                <option value="connections">Connections Only</option>
+                <option value="private">Private</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">Show Online Status</div>
+              <div class="setting-description">Let others see when you're active</div>
+            </div>
+            <div class="setting-control">
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="settings.privacy.showOnlineStatus">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">Messaging Permissions</div>
+              <div class="setting-description">Control who can send you messages</div>
+            </div>
+            <div class="setting-control select-control">
+              <select [(ngModel)]="settings.privacy.allowMessaging">
+                <option value="all">Everyone</option>
+                <option value="connections">Connections Only</option>
+                <option value="none">No One</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">Activity Visibility</div>
+              <div class="setting-description">Let others see your activity on the platform</div>
+            </div>
+            <div class="setting-control">
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="settings.privacy.activityVisibility">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Account Settings -->
+      <div class="settings-section" *ngIf="currentSection === 'account'">
+        <h2>Account Settings</h2>
+        <p class="section-description">Manage your account information and preferences</p>
+
+        <div class="settings-group">
+          <div class="setting-item with-input">
+            <div class="setting-details">
+              <div class="setting-title">Email Address</div>
+              <div class="setting-description">Your primary contact email</div>
+            </div>
+            <div class="setting-control input-control">
+              <input type="email" [(ngModel)]="settings.account.email">
+            </div>
+          </div>
+
+          <div class="setting-item with-input">
+            <div class="setting-details">
+              <div class="setting-title">Password</div>
+              <div class="setting-description">Secure your account with a strong password</div>
+            </div>
+            <div class="setting-control password-control">
+              <input type="password" disabled [(ngModel)]="settings.account.password">
+              <button class="btn-link" (click)="changePassword()">Change</button>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">Language</div>
+              <div class="setting-description">Choose your preferred language</div>
+            </div>
+            <div class="setting-control select-control">
+              <select [(ngModel)]="settings.account.language">
+                <option *ngFor="let lang of languages" [value]="lang.code">{{lang.name}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">Timezone</div>
+              <div class="setting-description">Set your local timezone</div>
+            </div>
+            <div class="setting-control select-control">
+              <select [(ngModel)]="settings.account.timezone">
+                <option *ngFor="let tz of timezones" [value]="tz.code">{{tz.name}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">Two-Factor Authentication</div>
+              <div class="setting-description">Add an extra layer of security</div>
+            </div>
+            <div class="setting-control">
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="settings.account.twoFactorAuth">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="danger-zone">
+          <h3>Danger Zone</h3>
+          <p>Permanently delete your account and all associated data</p>
+          <button class="btn-danger" (click)="deleteAccount()">Delete Account</button>
+        </div>
+      </div>
+
+      <!-- Appearance Settings -->
+      <div class="settings-section" *ngIf="currentSection === 'appearance'">
+        <h2>Appearance Settings</h2>
+        <p class="section-description">Customize how SkillMatch AI looks for you</p>
+
+        <div class="settings-group">
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">Theme</div>
+              <div class="setting-description">Choose between light and dark mode</div>
+            </div>
+            <div class="setting-control select-control">
+              <select [(ngModel)]="settings.appearance.theme">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="system">System Default</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-details">
+              <div class="setting-title">Font Size</div>
+              <div class="setting-description">Adjust text size throughout the app</div>
+            </div>
+            <div class="setting-control select-control">
+              <select [(ngModel)]="settings.appearance.fontSize">
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-actions">
+        <button class="btn-primary" (click)="saveSettings()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div> 
