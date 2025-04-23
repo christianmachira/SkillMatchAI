@@ -6,7 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "dev:ssr": "ng run skillmatch-ai-frontend:serve-ssr",
+    "serve:ssr": "node dist/skillmatch-ai-frontend/server/main.js",
+    "build:ssr": "ng build && ng run skillmatch-ai-frontend:server",
+    "prerender": "ng run skillmatch-ai-frontend:prerender"
   },
   "private": true,
   "dependencies": {
